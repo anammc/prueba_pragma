@@ -4,13 +4,13 @@ import 'package:prueba_pragma/features/the_cat/data/repositories/cats_repository
 import 'package:prueba_pragma/features/the_cat/domain/repositories/cats_repository.dart';
 import 'package:prueba_pragma/features/the_cat/domain/use_cases/get_list_cats.dart';
 import 'package:prueba_pragma/features/the_cat/domain/use_cases/search_images.dart';
+import 'package:prueba_pragma/features/the_cat/presentation/blocs/cats_bloc.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
   // Bloc
-  // sl.registerFactory(() => ListCardBloc(getListCardsUseCase: sl()));
-  // sl.registerFactory(() => MagicCardBloc(searchCardUseCase: sl()));
+  sl.registerFactory(() => CatsBloc(getListCatsUseCase: sl(), searchImagesUseCase: sl()));
 
   // Use cases
   sl.registerLazySingleton(() => GetListCatsUseCase(repository: sl()));

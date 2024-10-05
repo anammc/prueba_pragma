@@ -1,3 +1,4 @@
+import 'package:prueba_pragma/features/the_cat/data/models/weight_model.dart';
 import 'package:prueba_pragma/features/the_cat/domain/entities/breed.dart';
 
 class BreedModel extends Breed {
@@ -43,7 +44,7 @@ class BreedModel extends Breed {
 
   factory BreedModel.fromJson(json) {
     return BreedModel(
-        weight: json['weight'],
+        weight: WeightModel.fromJson(json['weight']),
         images: json['images'],
         id: json['id'],
         name: json['name'],

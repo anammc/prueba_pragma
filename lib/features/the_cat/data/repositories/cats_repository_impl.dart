@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:prueba_pragma/core/error/features.dart';
 import 'package:prueba_pragma/features/the_cat/data/datasources/cats_remote_data_sources.dart';
-import 'package:prueba_pragma/features/the_cat/domain/entities/breed.dart';
-import 'package:prueba_pragma/features/the_cat/domain/entities/images.dart';
+import 'package:prueba_pragma/features/the_cat/domain/entities/breed_list.dart';
+import 'package:prueba_pragma/features/the_cat/domain/entities/images_list.dart';
 import 'package:prueba_pragma/features/the_cat/domain/repositories/cats_repository.dart';
 
 class CatsRepositoryImpl implements CatsRepository {
@@ -13,9 +13,9 @@ class CatsRepositoryImpl implements CatsRepository {
     required this.catsRemoteDataSourse});
 
   @override
-  Future<Either<Failure, Breed>> getListCats() async {
+  Future<Either<Failure, BreedList>> getListCats() async {
     try{
-      final Breed resp = await catsRemoteDataSourse.getCats();
+      final BreedList resp = await catsRemoteDataSourse.getCats();
       return Right(resp);
     }on DioException{
       return Left(ServerFailure());
@@ -23,9 +23,9 @@ class CatsRepositoryImpl implements CatsRepository {
   }
 
   @override
-  Future<Either<Failure, Images>> getImageById(String id) async {
+  Future<Either<Failure, ImagesList>> getImageById(String id) async {
     try{
-      final Images resp = await catsRemoteDataSourse.getImages(id);
+      final ImagesList resp = await catsRemoteDataSourse.getImages(id);
       return Right(resp);
     }on DioException{
       return Left(ServerFailure());

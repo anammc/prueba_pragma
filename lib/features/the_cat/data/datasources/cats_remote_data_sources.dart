@@ -1,17 +1,17 @@
 import 'package:dio/dio.dart';
-import 'package:prueba_pragma/features/the_cat/data/models/breed_model.dart';
-import 'package:prueba_pragma/features/the_cat/data/models/image_model.dart';
+import 'package:prueba_pragma/features/the_cat/data/models/breed_list_model.dart';
+import 'package:prueba_pragma/features/the_cat/data/models/images_list_model.dart';
 
 abstract class CatsRemoteDataSourse {
-  Future<ImagesModel> getImages(String id);
-  Future<BreedModel> getCats();
+  Future<ImagesListModel> getImages(String id);
+  Future<BreedListModel> getCats();
 
 }
 
 class CatsRemoteDataSourseImp implements CatsRemoteDataSourse {
   final Dio dio = Dio();
   @override
-  Future<BreedModel> getCats() async {
+  Future<BreedListModel> getCats() async {
     final resp = await dio.get(
       'https://api.thecatapi.com/v1/breeds',
       queryParameters: {
@@ -19,11 +19,11 @@ class CatsRemoteDataSourseImp implements CatsRemoteDataSourse {
             'live_99Qe4Ppj34NdplyLW67xCV7Ds0oSLKGgcWWYnSzMJY9C0QOu0HUR4azYxWky W2n'
       },
     );
-    return BreedModel.fromJson(resp.data);
+    return BreedListModel.fromJson(resp.data);
   }
 
   @override
-  Future<ImagesModel> getImages(String id) async {
+  Future<ImagesListModel> getImages(String id) async {
     final resp = await dio.get(
       'https://api.thecatapi.com/v1/images/search?breed_ids=$id',
       queryParameters: {
@@ -31,6 +31,6 @@ class CatsRemoteDataSourseImp implements CatsRemoteDataSourse {
             'live_99Qe4Ppj34NdplyLW67xCV7Ds0oSLKGgcWWYnSzMJY9C0QOu0HUR4azYxWky W2n'
       },
     );
-    return ImagesModel.fromJson(resp.data);
+    return ImagesListModel.fromJson(resp.data);
   }
 }
