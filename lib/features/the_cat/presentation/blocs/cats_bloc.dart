@@ -1,4 +1,3 @@
-import 'package:prueba_pragma/features/the_cat/domain/entities/breed.dart';
 import 'package:prueba_pragma/features/the_cat/domain/entities/breed_list.dart';
 import 'package:prueba_pragma/features/the_cat/domain/use_cases/get_list_cats.dart';
 import 'package:prueba_pragma/features/the_cat/domain/use_cases/search_images.dart';
