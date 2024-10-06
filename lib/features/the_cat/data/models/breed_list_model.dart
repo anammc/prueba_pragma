@@ -7,7 +7,7 @@ class BreedListModel extends BreedList{
   factory BreedListModel.fromJson(List<dynamic> json){
     
     return BreedListModel(
-      cats: json.isEmpty ? [] : List.from((json).map((card) => BreedModel.fromJson(card)))
+      cats: json.isEmpty ? [] : List.from((json).map((cat) => BreedModel.fromJson(cat)))
     );
   }
 

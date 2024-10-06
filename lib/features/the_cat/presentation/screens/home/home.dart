@@ -10,13 +10,15 @@ import 'package:prueba_pragma/styles/font_styles.dart';
 
 class HomeScreen extends StatelessWidget {
 
-  HomeScreen({super.key}) {}
+  HomeScreen({super.key});
+
+  final bloc = sl.get<CatsBloc>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: CustomTheme().colors.lightBlue,
+        backgroundColor: CustomTheme().colors.lightPurple,
         leading: const SizedBox.shrink(),
         title: Text(
           "Catbreeds",
@@ -30,31 +32,38 @@ class HomeScreen extends StatelessWidget {
 
   Widget listBreerd() {
     return StreamBuilder<BreedList>(
-      stream: sl.get<CatsBloc>().catsController,
+      stream: bloc.catsController,
       builder: (context, snapshot) {
+        if(!snapshot.hasData){
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
         return Column(
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0, top: 16.0),
               child: TextFormField(
                 style: FontStyles.texto(),
-                onChanged: (value) {},
+                onChanged: (value) {
+                  bloc.filterBreedsByText(value);
+                },
                 maxLines: 1,
                 decoration: TextFieldStyle.withIcon(
                   labelText: "Buscar",
                   leftIcon: Icon(
                     Icons.search,
-                    color: CustomTheme().colors.darkBlue,
+                    color: CustomTheme().colors.darkPurple,
                   ),
                 ),
-                cursorColor: CustomTheme().colors.darkBlue,
+                cursorColor: CustomTheme().colors.darkPurple,
               ),
             ),
             Expanded(
               child: ListView.separated(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                 shrinkWrap: true,
-                itemCount: 10,
+                itemCount: snapshot.data!.cats!.length,
                 separatorBuilder: (BuildContext context, int index) {
                   return const SizedBox(
                     height: 16.0,

@@ -14,8 +14,8 @@ class TextFieldStyle{
       filled: true,
       counterText: "",
       fillColor: Colors.transparent,
-      focusColor: colorInput ?? CustomTheme().colors.darkBlue,
-      hoverColor: colorInput ?? CustomTheme().colors.darkBlue,
+      focusColor: colorInput ?? CustomTheme().colors.darkPurple,
+      hoverColor: colorInput ?? CustomTheme().colors.darkPurple,
       suffixIcon: icon,
       prefixIcon: leftIcon,
       labelText: labelText,
@@ -25,10 +25,10 @@ class TextFieldStyle{
         fontSize: 16,
       ),
       enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: colorInput ?? CustomTheme().colors.darkBlue),
+        borderSide: BorderSide(color: colorInput ?? CustomTheme().colors.darkPurple),
       ),
       focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: colorInput ?? CustomTheme().colors.darkBlue),
+        borderSide: BorderSide(color: colorInput ?? CustomTheme().colors.darkPurple),
       ),
     );
   }

@@ -4,9 +4,9 @@ import 'package:prueba_pragma/styles/custom_theme.dart';
 
 class FontStyles{
 
-  static title({Color? colorText}){
+  static title({Color? colorText,double? fontSize}){
     return GoogleFonts.roboto(
-      fontSize: 18.0,
+      fontSize: fontSize ?? 18.0,
       fontWeight: FontWeight.w500,
       color: colorText ?? CustomTheme().colors.black,
     );

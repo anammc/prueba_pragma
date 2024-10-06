@@ -7,7 +7,7 @@ class ImagesListModel extends ImagesList{
   factory ImagesListModel.fromJson(List<dynamic> json){
     
     return ImagesListModel(
-      images: json.isEmpty ? [] : List.from((json).map((card) => ImagesModel.fromJson(card)))
+      images: json.isEmpty ? [] : List.from((json).map((image) => ImagesModel.fromJson(image)))
     );
   }
 

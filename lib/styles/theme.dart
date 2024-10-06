@@ -5,14 +5,14 @@ abstract class ThemeStructure {
 }
 
 class ColorsTheme {
-  final Color darkBlue;
-  final Color lightBlue;
+  final Color darkPurple;
+  final Color lightPurple;
   final Color white;
   final Color black;
 
   const ColorsTheme({
-    required this.darkBlue,
-    required this.lightBlue,
+    required this.darkPurple,
+    required this.lightPurple,
     required this.white,
     required this.black,
   });

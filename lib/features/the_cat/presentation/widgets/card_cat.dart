@@ -14,11 +14,12 @@ class CardCat extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        RedirectService.goTo(context, const DetailCat());
+        RedirectService.goTo(context, DetailCat(breed: breed,));
       },
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: CustomTheme().colors.black, width: 1.0),
+          border: Border.all(color: CustomTheme().colors.darkPurple, width: 1.0),
+          borderRadius: BorderRadius.circular(8.0),
         ),
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -30,7 +31,7 @@ class CardCat extends StatelessWidget {
                 Text(
                   'Más...',
                   style: FontStyles.title(
-                      colorText: CustomTheme().colors.darkBlue),
+                      colorText: CustomTheme().colors.darkPurple),
                 ),
               ],
             ),
@@ -42,11 +43,11 @@ class CardCat extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'origen',
+                  "Origen: ${breed?.origin ?? ""}",
                   style: FontStyles.subTitle(),
                 ),
                 Text(
-                  'temperamento',
+                  "Inteligencia: ${breed?.intelligence ?? 0}",
                   style: FontStyles.subTitle(),
                 ),
               ],
@@ -61,11 +62,14 @@ class CardCat extends StatelessWidget {
     if (breed?.images?.isEmpty ?? true) {
       return const CircularProgressIndicator();
     }
-    return Image.network(
-      breed?.images?[0].url ?? "",
-      fit: BoxFit.cover,
-      height: 350.0,
-      width: double.infinity,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10.0),
+      child: Image.network(
+        breed?.images?[0].url ?? "",
+        fit: BoxFit.cover,
+        height: 350.0,
+        width: double.infinity,
+      ),
     );
   }
 }

@@ -12,6 +12,8 @@ class CatsBloc {
 
   ///TODO: este de cambia a un modelo de datos para la ui
   late BreedList breedList;
+  late BreedList breedListFilter = BreedList(cats: []);
+  String textFilter = "";
 
   getInitCats() async {
     final result = await getListCatsUseCase();
@@ -35,8 +37,20 @@ class CatsBloc {
             catsController.sink.add(breedList);
           },
         );
-        //filterBreedsByText(filterText);
       });
+    }
+  }
+
+  filterBreedsByText(String text) {
+    textFilter = text;
+    if (text == "") {
+      catsController.sink.add(breedList);
+    } else {
+      breedListFilter.cats = breedList.cats!
+          .where((element) =>
+              element.name!.toLowerCase().contains(text.toLowerCase()))
+          .toList();
+      catsController.sink.add(breedListFilter);
     }
   }
 

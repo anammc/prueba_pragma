@@ -4,8 +4,8 @@ import 'package:prueba_pragma/styles/theme.dart';
 class CustomTheme implements ThemeStructure {
   @override
   final colors = const ColorsTheme(
-      darkBlue: Color(0xff3f51b5),
-      lightBlue: Color(0xff03a9f4),
+      darkPurple: Color(0xff71479A),
+      lightPurple: Color(0xffAF82BA),
       white: Color(0xffffffff),
       black: Color(0xff000000));
 }
