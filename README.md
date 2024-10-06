@@ -35,4 +35,5 @@ Las principales dependencias utilizadas en este proyecto son:
     flutter pub get
 
 3. Conecta un dispositivo o inicia un emulador y ejecuta la aplicación:
+    ```bash
     flutter run
